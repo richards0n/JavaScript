@@ -1,4 +1,6 @@
 'use strict'
+const _ = require('underscore')
+
 const sentences = [{subject: 'JavaScript', verb: 'is', object: 'great'},
                    {subject: 'Elephants', verb:'are', object:'large'}];
 
@@ -10,7 +12,14 @@ function say({subject, verb, object})
 console.log(`${subject}, ${verb}, ${object}`);
 }
 // es6 feature for .. of
-for (let s of sentences)
+//for (let s of sentences)
+//{
+//    say(s);
+//}
+
+const verbs = _.pluck(sentences, 'verb')
+
+for (let v of verbs)
 {
-    say(s);
+        console.log(`found verb:, ${v}`)
 }
