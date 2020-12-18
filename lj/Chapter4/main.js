@@ -13,11 +13,10 @@ function randFace() {
 let funds = 50;             // starting condition
 let round = 0;
 
-while (funds>0 && funds<100) {
+while (funds > 0 && funds < 100) {
     round++;
-    console.log('round ${round}:');
+    console.log('round ${round};');
     console.log('\tstarting funds: ${funds}p');
-
     //  place bet
     let bets = {crown: 0 , anchor: 0, heart: 0, spade: 0, club: 0, diamond: 0};
     let totalBet = rand(1, funds);
