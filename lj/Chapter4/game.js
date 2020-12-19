@@ -1,13 +1,13 @@
 //  return random integer in range [m, n]  (inclusive)
 function rand(m,n)  {
-    return m + Math.floor((n-m+2)*Math.random());
+    return m + Math.floor((n-m+1)*Math.random());
 }
 
 // randomly return a string representing on of the six
 // Crown And Anchor suits
 function randFace() {
     return ["crown", "anchor", "heart", "spade", "club", "diamond"]
-           [rand[0,5]];
+           [rand(0,5)];
 }
 
 let funds = 50;             // starting condition
@@ -15,8 +15,8 @@ let round = 0;
 
 while (funds > 0 && funds < 100) {
     round++;
-    console.log('round ${round};');
-    console.log('\tstarting funds: ${funds}p');
+    console.log('\tround: '  + round);
+    console.log('\tstarting funds: ' + funds + 'p');
     //  place bet
     let bets = {crown: 0 , anchor: 0, heart: 0, spade: 0, club: 0, diamond: 0};
     let totalBet = rand(1, funds);
@@ -35,16 +35,19 @@ while (funds > 0 && funds < 100) {
     }
     funds = funds - totalBet;
     console.log('\tbets: ' + 
-                Object.keys(bets).map(face => '${face}:${bets[face] pence').join(', ') + 
-                ' total: ${totalBet} pence)');
+                Object.keys(bets).map(face => face + ':' + bets[face] + ' pence').join(', ') + 
+                ' total: ' + totalBet + ' pence)');
     
     //  Roll Dice
     const hand = [];
     for (let roll = 0; roll < 3; roll++) {
         hand.push(randFace());
     }
-    console.log('\thand: ${hand.join(', ')}');
-
+    for (let x = 0; x < hand.length; x++) {
+        console.log("hand: " + hand[x]);
+    }
+    // console.log("hand: " + hand);
+  
     //  Collect Winnings
     let winnings = 0;
     for (let die = 0; die < hand.length; die++) {
@@ -53,6 +56,6 @@ while (funds > 0 && funds < 100) {
             winnings = winnings + bets[face];
     }
     funds = funds + winnings;
-    console.log('\twinnings: ${winnings}');
+    console.log('\twinnings: ' + winnings);
 }
-console.log('\tending funds: ${funds}');
+console.log('\tending funds: ' + funds);
