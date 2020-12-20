@@ -1,8 +1,9 @@
-// const player = {name: "Thomas", rank: "Midshipman", age: 29};
-let player = ["Thomas", "Midshipman", 29];
+const player = {name: "Thomas", rank: "Midshipman", age: 29};
 
-for (let p in player) {
-    if (player.hasOwnProperty(p)) {
-        console.log(p + ": " + player[p]);
+for (let prop in player) {
+    if (player.hasOwnProperty(prop)) {
+        console.log(prop + ": " + player[prop]);
     }
 }
+let name = "Nigel P Richardson";
+console.log("My Name Is : " + name);
